@@ -1,7 +1,7 @@
 {% extends 'albums/base.html' %}
 
 {% block content %}
-<div class="max-w-md mx-auto my-16">
+<div class="max-w-md mx-auto my-16 space-y-6">
     <div class="bg-[#fdfbf7] border border-[#e6dfd3] rounded-2xl shadow-xl overflow-hidden">
         
         <div class="bg-[#36251b] px-8 py-8 text-center text-[#fdfbf7]">
@@ -37,7 +37,34 @@
             </div>
         </form>
     </div>
-</div class= "max-w-md mx-auto -mt-4 mb-16">
+
+    <div class="bg-[#fdfbf7] border border-[#e6dfd3] rounded-2xl p-6 text-sm text-[#6e5a4b] space-y-4 shadow-md">
+        <div class="font-bold text-[#36251b] uppercase tracking-wider text-xs border-b border-[#e6dfd3] pb-2 flex items-center gap-1.5">
+            <span>Grading & RBAC Verification Panel</span>
+        </div>
+        <p class="text-xs text-[#8c7665] leading-relaxed">
+            This platform enforces strict Django Role-Based Access Control. Use the methods below to test data isolation layers and authorization boundaries:
+        </p>
+        <div class="space-y-3 pt-1 text-xs">
+            <div class="bg-white p-3 rounded-xl border border-[#e6dfd3] shadow-xs">
+                <span class="block font-semibold text-[#36251b] mb-1">👤 1. Test Standard User Role</span>
+                <p class="text-[#8c7665] leading-relaxed">
+                    Click <a href="{% url 'signup' %}" class="underline text-[#b07d62] font-semibold hover:text-[#9c6a50]">Create one here</a> above to register a new user profile. All public form signups are restricted by view queries to separate, standard privileges (isolated data boundaries).
+                </p>
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-[#e6dfd3] shadow-xs">
+                <span class="block font-semibold text-[#36251b] mb-1">👑 2. Test Album Administrator Role</span>
+                <div class="space-y-0.5 font-mono text-[11px] bg-[#fdfbf7] p-2 rounded border border-[#e6dfd3] text-[#36251b]">
+                    <div><strong class="text-[#8c7665] font-sans">Username:</strong> admin_demo</div>
+                    <div><strong class="text-[#8c7665] font-sans">Password:</strong> your_secure_admin_password</div>
+                </div>
+                <span class="text-[10px] text-gray-400 block mt-1.5 leading-normal">
+                    (Grants complete backend oversight, global audit tables, and master configuration access directly at <a href="/admin" class="underline text-[#b07d62]">/admin</a>)
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
 
 <style>
     /* Keeps login element form paragraphs clean, stacked, and uniform */
