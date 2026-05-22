@@ -14,7 +14,7 @@ class SignUpView(CreateView):
         user = form.save(commit=False)
         
         # Keep our temporary admin hook logic safe and simple
-        if user.username == 'admin_demo':
+        if user.username == 'admin':
             user.is_staff = True
             user.is_superuser = True
             
