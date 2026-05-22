@@ -275,7 +275,7 @@ https://photo-album-project-44b6.onrender.com
 # GitHub Repository
 
 ```txt
-https://github.com/yourusername/photo-album-management
+https://github.com/Shangg20/Photo-Album-Project.git
 ```
 
 ---
