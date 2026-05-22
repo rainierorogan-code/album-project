@@ -1,7 +1,5 @@
-# Production-Ready Django Photo Album Management System
-
-A production-ready Django-based Photo Album Management System that allows users to create, manage, and organize photo albums with secure authentication, role-based access control, and cloud-based media storage using Cloudinary.
-
+# LMSY Gallery Vault — Photo Album System
+A secure, warm-minimalist photo sanctuary engineered with Django, PostgreSQL, and Cloudinary for decentralized asset storage. This platform implements strict native backend Role-Based Access Control (RBAC) to isolate user environments and secure media streams.
 ---
 
 # Features
