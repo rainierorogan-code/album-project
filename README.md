@@ -1,5 +1,7 @@
 # LMSY Gallery Vault — Photo Album System
+
 A secure, warm-minimalist photo sanctuary engineered with Django, PostgreSQL, and Cloudinary for decentralized asset storage. This platform implements strict native backend Role-Based Access Control (RBAC) to isolate user environments and secure media streams.
+
 ---
 
 # Features
