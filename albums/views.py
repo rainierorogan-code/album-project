@@ -2,23 +2,24 @@ from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import ListView, ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib.auth.models import User
 from .models import Album
 
 class SignUpView(CreateView):
     form_class = UserCreationForm
-    success_url = reverse_lazy('login')  # Redirects to login page after successful registration
-    template_name = 'registration/signup.html' 
+    template_name = 'registration/signup.html'
+    success_url = reverse_lazy('login')
 
-    # ADD THIS TEMPORARY METHOD:
     def form_valid(self, form):
-        response = super().form_valid(form)
-        # If you sign up with the username 'admin_demo', it automatically promotes you
-        if self.object.username == 'admin':
-            self.object.is_staff = True
-            self.object.is_superuser = True
-            self.object.save()
-        return response
+        # Gracefully handle the instance creation
+        user = form.save(commit=False)
+        
+        # Keep our temporary admin hook logic safe and simple
+        if user.username == 'admin_demo':
+            user.is_staff = True
+            user.is_superuser = True
+            
+        user.save()
+        return super().form_valid(form)
 
 # READ: List all albums
 class AlbumListView(ListView):
