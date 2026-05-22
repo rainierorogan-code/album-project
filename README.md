@@ -1,98 +1,313 @@
-LMSY Gallery Vault — Curated Media System
-A secure, warm-minimalist photo sanctuary engineered with Django, PostgreSQL, and Cloudinary for decentralized asset storage. This platform implements strict native backend Role-Based Access Control (RBAC) to isolate user environments and secure media streams.
+# Production-Ready Django Photo Album Management System
 
-🚀 Presentation & Grading Quick Start
-To streamline evaluation, the system interface features an embedded Grading & RBAC Verification Panel right on the authentication gateway page.
+A production-ready Django-based Photo Album Management System that allows users to create, manage, and organize photo albums with secure authentication, role-based access control, and cloud-based media storage using Cloudinary.
 
-👥 Test Scenarios & Authorization Credentials
-Standard User Layer (Isolated Workspace)
+---
 
-Action: Click "Create one here" on the landing interface to register a fresh profile.
+# Features
 
-RBAC Enforcement: Any public registration defaults to standard user parameters (is_staff=False). Users operate in absolute data isolation—they can only create, view, modify, or delete media parameters that they personally initialized.
+- User Authentication (Login, Logout, Registration)
+- Role-Based Access Control (RBAC)
+  - Standard Users
+  - Album Administrators
+- CRUD Operations for Albums and Photos
+- Cloudinary Image Upload & Storage
+- Responsive User Interface
+- PostgreSQL Database Integration
+- Production Deployment on Render
+- Secure Environment Variables Configuration
 
-System Administrator Layer (Global Oversight)
+---
 
-Username: admin_user
+# Technologies Used
 
-Security Override: Logging in with this master profile lifts localized filters, allowing complete system auditing, object tracking, and administrative access via the interface and the native engine dashboard at /admin.
+- Python
+- Django
+- PostgreSQL
+- Cloudinary
+- HTML5 / CSS3 / Bootstrap
+- Render
 
-🛡️ Core Security & RBAC Architecture
-The platform implements a multi-layered defense matrix to ensure complete database integrity and block horizontal privilege escalation:
+---
 
-Query-Level Separation: Views inherit LoginRequiredMixin and explicitly override get_queryset() to intercept raw database hits using the active session parameters:
+# System Architecture
 
-Python
-def get_queryset(self):
-    if self.request.user.is_superuser:
-        return Album.objects.all()
-    return Album.objects.filter(created_by=self.request.user)
-URL Manipulation Protection: Destructive actions (UpdateView and DeleteView) bind UserPassesTestMixin alongside strict query filters. If an unprivileged user manually alters a URL routing parameter to guess another user's asset ID, the engine automatically returns a clean 404 Not Found or 403 Forbidden intercept block.
+This project follows industry-standard Django architecture practices:
 
-Session Integrity & Automatic Bouncing: Unauthenticated traffic or terminated sessions are intercepted at the template header layer and gracefully routed back to the authentication gateway, preventing empty layout leaks.
+- Class-Based Views (CBVs) for all CRUD operations
+- Django Authentication System for secure login and user management
+- Role-Based Access Control using Django Groups and Permissions
+- Cloudinary for cloud image storage
+- PostgreSQL as the production database
+- Environment Variables for sensitive credentials
 
-📂 System File Architecture
-Plaintext
-photo-album-project/
+---
+
+# Project Structure
+
+```bash
+photo_album/
 │
-├── core/                         # Project Configuration Root
-│   ├── settings.py               # Database tracking & Cloudinary API configuration
-│   └── urls.py                   # Main URL routing mappings
+├── albums/
+├── users/
+├── templates/
+├── static/
+├── photo_album/
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
 │
-├── albums/                       # Core Application Folder
-│   ├── models.py                 # Album schemas and database definitions
-│   └── views.py                  # Strict RBAC query isolation filters
-│
-└── templates/                    # Centralized Layouts Engine
-    ├── albums/
-    │   ├── base.html             # Global canvas container with session intercepts
-    │   └── album_list.html       # Dynamic personalized gallery feed
-    └── registration/
-        ├── login.html            # Gateway interface with evaluation guide
-        └── signup.html           # Minimalist registration terminal
-🛠️ Technical Tech Stack
-Core Framework: Django 5.x (Python)
+├── requirements.txt
+├── manage.py
+├── .env
+└── README.md
+```
 
-Database Management System: PostgreSQL (Production on Render) / SQLite (Local Fallback)
+---
 
-Cloud Infrastructure Sync: Cloudinary API SDK (cloudinary_storage Integration)
+# Installation Guide
 
-Asset Servicing Middleware: WhiteNoise (Compressed Manifest Static Storage)
+## 1. Clone the Repository
 
-UI Interface Layout: Tailwind CSS via CDN (Warm-minimalist aesthetic)
+```bash
+git clone https://github.com/yourusername/photo-album-management.git
+cd photo-album-management
+```
 
-📦 Local Deployment Workflow
-To mirror this platform on a local station, execute the following routines inside your workspace terminal:
+---
 
-1. Initialize Environment Variables
-Create a .env file within the root workspace directory and map your respective server parameters:
+## 2. Create Virtual Environment
 
-Code snippet
-DJANGO_SECRET_KEY=your_local_secret_key
-DJANGO_DEBUG=True
+```bash
+python -m venv venv
+```
+
+### Activate Virtual Environment
+
+#### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+#### Linux / Mac
+
+```bash
+source venv/bin/activate
+```
+
+---
+
+## 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+# Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+SECRET_KEY=your_secret_key
+DEBUG=False
+
+DATABASE_URL=your_postgresql_database_url
+
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
-2. Dependency Resolution & Database Execution
-Install package requirements, build your local database schemas, and initialize the development server:
+```
 
-Bash
-# Install system libraries
-pip install -r requirements.txt
+---
 
-# Compile database configurations
+# Database Migration
+
+```bash
 python manage.py makemigrations
 python manage.py migrate
+```
 
-# Boot up the local runtime engine
+---
+
+# Create Superuser
+
+```bash
+python manage.py createsuperuser
+```
+
+---
+
+# Run Development Server
+
+```bash
 python manage.py runserver
-Navigate to http://127.0.0.1:8000/ to preview the interface workspace locally.
+```
 
-🌐 Production Environment Controls (Render)
-The platform tracking branches map automatically to production clusters. The application pipeline depends on these core deployment configurations:
+Visit:
 
-Build Command: pip install -r requirements.txt && python manage.py migrate
+```bash
+http://127.0.0.1:8000/
+```
 
-Start Command: gunicorn core.wsgi:application
+---
 
-Database Tracking Rule: Handled dynamically via dj_database_url matching against a persistent DATABASE_URL environment flag. If the variable is present, local temporary SQLite states are disabled to enforce permanent storage.
+# Cloudinary Configuration
+
+Install Cloudinary packages:
+
+```bash
+pip install cloudinary django-cloudinary-storage
+```
+
+Add the following to `settings.py`:
+
+```python
+INSTALLED_APPS = [
+    ...
+    'cloudinary',
+    'cloudinary_storage',
+]
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+```
+
+---
+
+# Role-Based Access Control (RBAC)
+
+The application implements RBAC using Django Groups and Permissions.
+
+## Standard User
+
+Can:
+- View albums
+- Upload photos
+- Edit own content
+
+Cannot:
+- Manage other users
+- Delete system-wide content
+
+---
+
+## Album Administrator
+
+Can:
+- Manage all albums
+- Delete any photo
+- Manage users and permissions
+
+---
+
+# Class-Based Views Used
+
+The system utilizes Django CBVs such as:
+
+- ListView
+- DetailView
+- CreateView
+- UpdateView
+- DeleteView
+- LoginView
+- LogoutView
+
+Example:
+
+```python
+from django.views.generic import ListView
+from .models import Album
+
+class AlbumListView(ListView):
+    model = Album
+    template_name = 'albums/album_list.html'
+```
+
+---
+
+# Deployment on Render
+
+## Deployment Steps
+
+1. Push project to GitHub
+2. Create PostgreSQL database on Render
+3. Create a new Web Service on Render
+4. Connect the GitHub repository
+5. Add environment variables
+6. Deploy application
+
+---
+
+# Build Command
+
+```bash
+./build.sh
+```
+
+---
+
+# Start Command
+
+```bash
+gunicorn core.wsgi:application
+```
+
+---
+
+# Production Security Notes
+
+- DEBUG disabled in production
+- Secret keys stored in environment variables
+- Cloudinary used instead of local media storage
+- PostgreSQL used for scalable production database management
+
+---
+
+# requirements.txt Example
+
+```txt
+Django
+gunicorn
+psycopg2-binary
+cloudinary
+django-cloudinary-storage
+dj-database-url
+python-decouple
+whitenoise
+Pillow
+```
+
+---
+
+# Live Application URL
+
+```txt
+https://your-render-app.onrender.com
+```
+
+---
+
+# GitHub Repository
+
+```txt
+https://github.com/yourusername/photo-album-management
+```
+
+---
+
+# Future Improvements
+
+- Image tagging system
+- Album sharing
+- Search and filtering
+- REST API integration
+- Drag-and-drop uploads
+- Activity logs
+
+---
+
+# License
+
+This project is for educational purposes.
