@@ -70,7 +70,7 @@ photo_album/
 ## 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/photo-album-management.git
+git clone https://github.com/Shangg20/Photo-Album-Project.git
 cd photo-album-management
 ```
 
@@ -102,23 +102,6 @@ source venv/bin/activate
 
 ```bash
 pip install -r requirements.txt
-```
-
----
-
-# Environment Variables
-
-Create a `.env` file in the root directory:
-
-```env
-SECRET_KEY=your_secret_key
-DEBUG=False
-
-DATABASE_URL=your_postgresql_database_url
-
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
 ```
 
 ---
@@ -284,7 +267,7 @@ Pillow
 # Live Application URL
 
 ```txt
-https://your-render-app.onrender.com
+https://photo-album-project-44b6.onrender.com
 ```
 
 ---
