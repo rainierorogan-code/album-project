@@ -20,7 +20,12 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-fallback-key')
 DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 
 # ALLOWED_HOSTS needs to include Render and Localhost
-ALLOWED_HOSTS = os.getenv('photo-album-project-44b6.onrender.com', 'DJANGO_ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
+ALLOWED_HOSTS = [
+    'photo-album-project-44b6.onrender.com', 
+    'localhost', 
+    '127.0.0.1',
+    '.onrender.com'  # This catching wildcard ensures any subdomain shifts work too
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
