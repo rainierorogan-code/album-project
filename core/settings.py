@@ -21,7 +21,7 @@ DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 
 # ALLOWED_HOSTS needs to include Render and Localhost
 ALLOWED_HOSTS = [
-    'photo-album-project-44b6.onrender.com', 
+    'album-project-c9js.onrender.com', 
     'localhost', 
     '127.0.0.1',
     '.onrender.com'  # This catching wildcard ensures any subdomain shifts work too
