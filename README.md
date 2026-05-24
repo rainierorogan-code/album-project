@@ -1,104 +1,236 @@
-# LMSY Gallery Vault — Photo Album System
+# MLBB Hall of Fame — Digital Archive
 
-A secure, warm-minimalist photo sanctuary engineered with Django, PostgreSQL, and Cloudinary for decentralized asset storage. This platform implements strict native backend Role-Based Access Control (RBAC) to isolate user environments and secure media streams.
+MLBB Hall of Fame is a Mobile Legends: Bang Bang (MLBB) themed digital archive designed for players to organize and showcase their battle records, gameplay highlights, and collection assets.  
 
----
-
-# Features
-
-- User Authentication (Login, Logout, Registration)
-- Role-Based Access Control (RBAC)
-  - Standard Users
-  - Album Administrators
-- CRUD Operations for Albums and Photos
-- Cloudinary Image Upload & Storage
-- Responsive User Interface
-- PostgreSQL Database Integration
-- Production Deployment on Render
-- Secure Environment Variables Configuration
+The platform acts as a personal "Hall of Fame" where users can curate, manage, and display their achievements through an immersive game-inspired interface inspired by the official MLBB client design.
 
 ---
 
-# Technologies Used
+# Live Website
 
-- Python
-- Django
-- PostgreSQL
+🌐 Live Demo: https://album-project-c9js.onrender.com
+
+---
+
+# GitHub Repository
+
+📁 GitHub Repository: https://github.com/yourusername/your-repository-name
+
+---
+
+# Project Overview
+
+The application provides a modern esports-inspired experience that allows players to:
+
+- Store gameplay screenshots
+- Archive battle records
+- Showcase highlights
+- Organize personal MLBB collections
+- Manage custom albums and records
+
+The entire platform is designed around the visual identity of Mobile Legends: Bang Bang using metallic gold accents, deep navy backgrounds, glowing hover effects, and bold typography.
+
+---
+
+# Tech Stack
+
+## Backend
+- Django (Python)
+
+Handles:
+
+- User authentication
+- Database management
+- Asset management
+- Administrative controls
+- Backend security
+
+---
+
+## Frontend
+- Tailwind CSS
+
+Used to create:
+
+- MLBB-inspired user interface
+- Responsive layouts
+- Dynamic hover effects
+- Mythic-themed design system
+
+---
+
+## Database
+- SQLite (Development)
+- PostgreSQL (Production)
+
+Stores:
+
+- User profiles
+- Album titles
+- Descriptions
+- Metadata
+- User collections
+
+---
+
+## Media Storage
 - Cloudinary
-- HTML5 / CSS3 / Bootstrap
-- Render
+
+Provides:
+
+- Cloud image hosting
+- Optimized image delivery
+- Remote asset storage
+- High-quality screenshot management
 
 ---
 
-# System Architecture
+## Deployment
+- Render.com
 
-This project follows industry-standard Django architecture practices:
+Used for:
 
-- Class-Based Views (CBVs) for all CRUD operations
-- Django Authentication System for secure login and user management
-- Role-Based Access Control using Django Groups and Permissions
-- Cloudinary for cloud image storage
-- PostgreSQL as the production database
-- Environment Variables for sensitive credentials
-
----
-
-# Project Structure
-
-```bash
-photo_album/
-│
-├── albums/
-├── users/
-├── templates/
-├── static/
-├── photo_album/
-│   ├── settings.py
-│   ├── urls.py
-│   ├── wsgi.py
-│
-├── requirements.txt
-├── manage.py
-├── .env
-└── README.md
-```
+- Cloud hosting
+- Production deployment
+- Database hosting
+- Environment variable management
 
 ---
 
-# Installation Guide
+## Version Control
+- GitHub
 
-## 1. Clone the Repository
+Used for:
 
-```bash
-git clone https://github.com/Shangg20/Photo-Album-Project.git
-cd photo-album-management
-```
-
----
-
-## 2. Create Virtual Environment
-
-```bash
-python -m venv venv
-```
-
-### Activate Virtual Environment
-
-#### Windows
-
-```bash
-venv\Scripts\activate
-```
-
-#### Linux / Mac
-
-```bash
-source venv/bin/activate
-```
+- Source code management
+- Collaboration
+- Version tracking
+- Deployment integration
 
 ---
 
-## 3. Install Dependencies
+# Core Features
+
+## Esports-Ready Interface
+Every screen is designed with a consistent MLBB-inspired visual style featuring:
+
+- Metallic gold highlights
+- Deep navy backgrounds
+- Bold uppercase typography
+- Mythic-themed user interface
+- Animated hover glow effects
+
+---
+
+## Secure User Authentication
+Users can:
+
+- Register accounts
+- Log in securely
+- Manage personal collections
+- Access private galleries
+
+Each user maintains their own isolated archive system.
+
+---
+
+## Dynamic Collection Management
+Players can:
+
+- Initialize battle records
+- Modify existing entries
+- Terminate outdated records
+- Upload gameplay assets
+- Organize custom collections
+
+---
+
+## Role-Based Access Control (RBAC)
+The system includes administrator-level controls for:
+
+- Global monitoring
+- User management
+- Content auditing
+- Platform administration
+
+---
+
+## Responsive Asset Gallery
+The archive includes a responsive grid-based gallery system that:
+
+- Dynamically updates user content
+- Displays uploaded screenshots
+- Supports hover-state glow effects
+- Mimics legendary in-game item visuals
+
+---
+
+## Cloud-Synchronized Media Storage
+Cloudinary integration allows:
+
+- Fast image delivery
+- Reliable media hosting
+- Automatic cloud synchronization
+- Lightweight application performance
+
+---
+
+# Conceptual Architecture
+
+The platform operates using a client-server architecture.
+
+## Frontend Layer
+Handles:
+
+- User interface rendering
+- Responsive layouts
+- User interaction
+- MLBB-inspired visual presentation
+
+---
+
+## Backend Layer
+Handles:
+
+- Authentication
+- Database queries
+- Access control
+- Business logic
+- CRUD operations
+
+---
+
+## Cloud Storage Layer
+Cloudinary acts as the remote repository for uploaded assets and gameplay screenshots.
+
+---
+
+# Security Features
+
+The application implements Role-Based Access Control (RBAC) to protect user content.
+
+## Standard Users
+Regular users can:
+
+- Manage personal archives
+- Upload screenshots
+- Edit collections
+- Delete their own records
+
+---
+
+## Administrators
+Administrators can:
+
+- Monitor all user content
+- Audit platform uploads
+- Manage system-wide records
+
+---
+
+# Getting Started
+
+## 1. Install Project Requirements
 
 ```bash
 pip install -r requirements.txt
@@ -106,16 +238,33 @@ pip install -r requirements.txt
 
 ---
 
-# Database Migration
+## 2. Configure Environment Variables
+
+Create a `.env` file and add:
+
+```env
+SECRET_KEY=your_secret_key
+
+DEBUG=True
+
+DATABASE_URL=your_postgresql_database_url
+
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+```
+
+---
+
+## 3. Apply Database Migrations
 
 ```bash
-python manage.py makemigrations
 python manage.py migrate
 ```
 
 ---
 
-# Create Superuser
+## 4. Create an Administrator Account
 
 ```bash
 python manage.py createsuperuser
@@ -123,7 +272,7 @@ python manage.py createsuperuser
 
 ---
 
-# Run Development Server
+## 5. Run the Development Server
 
 ```bash
 python manage.py runserver
@@ -131,107 +280,23 @@ python manage.py runserver
 
 Visit:
 
-```bash
+```text
 http://127.0.0.1:8000/
 ```
 
 ---
 
-# Cloudinary Configuration
+# Deployment Configuration
 
-Install Cloudinary packages:
-
-```bash
-pip install cloudinary django-cloudinary-storage
-```
-
-Add the following to `settings.py`:
-
-```python
-INSTALLED_APPS = [
-    ...
-    'cloudinary',
-    'cloudinary_storage',
-]
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-```
-
----
-
-# Role-Based Access Control (RBAC)
-
-The application implements RBAC using Django Groups and Permissions.
-
-## Standard User
-
-Can:
-- View albums
-- Upload photos
-- Edit own content
-
-Cannot:
-- Manage other users
-- Delete system-wide content
-
----
-
-## Album Administrator
-
-Can:
-- Manage all albums
-- Delete any photo
-- Manage users and permissions
-
----
-
-# Class-Based Views Used
-
-The system utilizes Django CBVs such as:
-
-- ListView
-- DetailView
-- CreateView
-- UpdateView
-- DeleteView
-- LoginView
-- LogoutView
-
-Example:
-
-```python
-from django.views.generic import ListView
-from .models import Album
-
-class AlbumListView(ListView):
-    model = Album
-    template_name = 'albums/album_list.html'
-```
-
----
-
-# Deployment on Render
-
-## Deployment Steps
-
-1. Push project to GitHub
-2. Create PostgreSQL database on Render
-3. Create a new Web Service on Render
-4. Connect the GitHub repository
-5. Add environment variables
-6. Deploy application
-
----
-
-# Build Command
+## Render Build Command
 
 ```bash
-./build.sh
+pip install -r requirements.txt && python manage.py migrate
 ```
 
 ---
 
-# Start Command
+## Render Start Command
 
 ```bash
 gunicorn core.wsgi:application
@@ -239,58 +304,43 @@ gunicorn core.wsgi:application
 
 ---
 
-# Production Security Notes
+# Cloudinary Asset Management
 
-- DEBUG disabled in production
-- Secret keys stored in environment variables
-- Cloudinary used instead of local media storage
-- PostgreSQL used for scalable production database management
+## Automatic Media Cleanup
+Uploaded assets are automatically removed from Cloudinary whenever records are deleted from the system.
 
 ---
 
-# requirements.txt Example
+## Manual Asset Management
+To manually manage uploaded files:
 
-```txt
-Django
-gunicorn
-psycopg2-binary
-cloudinary
-django-cloudinary-storage
-dj-database-url
-python-decouple
-whitenoise
-Pillow
-```
+1. Open the Cloudinary Dashboard
+2. Navigate to **Media Explorer**
+3. Select uploaded assets
+4. Click **Delete**
 
 ---
 
-# Live Application URL
+# Testing Scenarios
 
-```txt
-https://photo-album-project-44b6.onrender.com
-```
+## Standard User Verification
 
----
-
-# GitHub Repository
-
-```txt
-https://github.com/Shangg20/Photo-Album-Project.git
-```
+1. Create a user account
+2. Upload gameplay screenshots
+3. Create battle records
+4. Log in using another account
+5. Verify that user archives remain private
 
 ---
 
-# Future Improvements
+## Administrator Verification
 
-- Image tagging system
-- Album sharing
-- Search and filtering
-- REST API integration
-- Drag-and-drop uploads
-- Activity logs
+1. Log in using an administrator account
+2. Access the administrative dashboard
+3. Verify visibility of all uploaded records
 
 ---
 
-# License
+# Project Goal
 
-This project is for educational purposes.
+MLBB Hall of Fame — Digital Archive was developed to provide Mobile Legends players with a modern, secure, and visually immersive platform for archiving and showcasing their in-game achievements, battle records, and gameplay highlights.
