@@ -14,7 +14,7 @@ The platform acts as a personal "Hall of Fame" where users can curate, manage, a
 
 # GitHub Repository
 
-📁 GitHub Repository: https://github.com/yourusername/your-repository-name
+📁 GitHub Repository: https://github.com/rainierorogan-code/album-project.git
 
 ---
 
